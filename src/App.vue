@@ -4,7 +4,7 @@
       :topic-title="activeTopic && activeTopic.title"
       :text="activeTopic && activeTopic.fullText"
     ></active-element>
-    <knowledge-base @select-topic="activateTopic"></knowledge-base>
+    <knowledge-base></knowledge-base>
   </div>
 </template>
 
@@ -36,7 +36,8 @@ export default {
   // 'topics' key can be referred to by inject elsewhere
   provide() {
     return {
-      topics: this.topics
+      topics: this.topics,
+      selectTopic: this.activateTopic // point at method
     }
   },
   methods: {
