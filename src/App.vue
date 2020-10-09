@@ -4,7 +4,7 @@
       :topic-title="activeTopic && activeTopic.title"
       :text="activeTopic && activeTopic.fullText"
     ></active-element>
-    <knowledge-base :topics="topics" @select-topic="activateTopic"></knowledge-base>
+    <knowledge-base @select-topic="activateTopic"></knowledge-base>
   </div>
 </template>
 
@@ -32,11 +32,30 @@ export default {
       activeTopic: null,
     };
   },
+  // provide is an internal mechanism built into Vue
+  // 'topics' key can be referred to by inject elsewhere
+  provide() {
+    return {
+      topics: this.topics
+    }
+  },
   methods: {
     activateTopic(topicId) {
       this.activeTopic = this.topics.find((topic) => topic.id === topicId);
     },
   },
+
+  mounted() {
+    // simulate data change to prove data can change when it's provided/injected
+    setTimeout(() => {
+      this.topics.push({
+        id: 'events',
+        title: 'Events',
+        description: 'Events are important in Vue',
+        fullText: 'Events allow you to trigger code on demand!'
+      })
+    }, 3000)
+  }
 };
 </script>
 

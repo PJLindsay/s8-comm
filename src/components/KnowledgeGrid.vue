@@ -13,7 +13,8 @@
 
 <script>
 export default {
-  props: ['topics'],
+  // can only inject something provided by a parent or ancestor
+  inject: ['topics'],
   emits: ['select-topic']
 };
 </script>
