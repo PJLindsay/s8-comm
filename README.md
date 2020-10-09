@@ -10,3 +10,7 @@ we can use Provide and Inject:
 
 Provide data in one place
 Inject data (use it) in another place
+
+we can also use provide and inject with methods/function (parent-child but not neighbour/sibling)
+
+typically we would use props and events, but we can use Provide and Inject if you have pass-through components (a more complex hierarchy such as grandparents, etc.)
